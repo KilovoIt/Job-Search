@@ -24,6 +24,10 @@ class MainApp(tk.Frame):
         return final
   
 
+    def clearHandler(self):
+        self.entry_what.delete(0, 'end')
+        self.entry_where.delete(0, 'end')
+    
     def runQuery(self, website):
     
         what_and_where = self.entry_what.get() + " " + self.entry_where.get()
@@ -34,7 +38,7 @@ class MainApp(tk.Frame):
                     
     def initUI(self):
         #GUI init
-        self.master.title("PySearch v1.0")
+        self.master.title("PySearch v1.1")
         self.pack(fill='both', expand=1)
         
         #gridconfig
@@ -74,7 +78,7 @@ class MainApp(tk.Frame):
         self.job_btn.grid(column=3, row=1, padx=10, pady=10, sticky='ew')
         
         self.clear_btn = ttk.Button(self, text='clear')
-        
+        self.clear_btn.config(command=lambda: self.clearHandler())
         self.clear_btn.grid(column=0, row=4, columnspan=4, sticky='ew', padx=10, pady=10)
     
     
